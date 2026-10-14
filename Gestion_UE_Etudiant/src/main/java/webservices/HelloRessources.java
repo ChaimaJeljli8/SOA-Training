@@ -37,4 +37,6 @@ public class HelloRessources {
                 .entity("Hello " + name + "!") // Insert the name from the URL into the response
                 .build();
     }
+
+
 }
