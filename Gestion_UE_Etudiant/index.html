@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOA — Module | ESPRIT</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-dark-subtle">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+            <span class="brand-dot"></span>
+            <strong>SOA</strong>
+            <span class="text-white-50 d-none d-sm-inline">| ESPRIT</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto gap-lg-2">
+                <li class="nav-item"><a class="nav-link" href="#presentation">Présentation</a></li>
+                <li class="nav-item"><a class="nav-link" href="#objectifs">Objectifs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contenu">Contenu</a></li>
+                <li class="nav-item"><a class="nav-link" href="#workshops">Ateliers</a></li>
+                <li class="nav-item"><a class="nav-link" href="#aap">AAP</a></li>
+                <li class="nav-item"><a class="nav-link" href="#ressources">Ressources</a></li>
+                <!-- NEW -->
+                <li class="nav-item"><a class="nav-link" href="#enseignante">Enseignante</a></li>
+            </ul>
+
+            <div class="ms-lg-3 mt-3 mt-lg-0 d-flex gap-2">
+                <a class="btn btn-outline-light btn-sm" href="https://github.com/badi3a/SOA-Training/">
+                    <i class="bi bi-rocket-takeoff me-1"></i> Démarrer
+                </a>
+                <button class="btn btn-light btn-sm" id="toggleTheme" type="button" aria-label="Basculer thème">
+                    <i class="bi bi-sun-fill" id="themeIcon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero">
+    <div class="container py-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <div class="badge text-bg-primary-subtle text-primary border border-primary-subtle mb-3">
+                    Année Universitaire 2025–2026 • UP_WEB
+                </div>
+
+                <h1 class="display-5 fw-bold mb-3">
+                    Architecture Orientée Services (SOA)
+                </h1>
+
+                <p class="lead text-body-secondary mb-4">
+                    Ce site présente le parcours du module SOA à l’École d’Ingénieurs ESPRIT :
+                    cours, ateliers (SOAP / REST / Sécurité / GraphQL) et projet d’analyse & refonte.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="#presentation" class="btn btn-primary">
+                        <i class="bi bi-journal-text me-1"></i> Lire la présentation
+                    </a>
+                    <a href="#workshops" class="btn btn-outline-primary">
+                        <i class="bi bi-box-arrow-up-right me-1"></i> Accéder aux ateliers
+                    </a>
+                </div>
+
+                <div class="mt-4 d-flex flex-wrap gap-3 text-body-secondary small">
+                    <span><i class="bi bi-layers me-1"></i> SOAP • REST • GraphQL</span>
+                    <span><i class="bi bi-shield-lock me-1"></i> Sécurité (JWT)</span>
+                    <span><i class="bi bi-diagram-3 me-1"></i> Architecture distribuée</span>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card shadow-soft border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h5 fw-semibold mb-3">📌 Description du repository</h2>
+                        <p class="mb-3 text-body-secondary">
+                            Ce dépôt propose un parcours d’apprentissage complet destiné aux étudiants inscrits au module
+                            <strong>Architecture Orientée Services (SOA)</strong> à l’École d’Ingénieurs ESPRIT.
+                            Il articule les apports théoriques avec une mise en pratique progressive à travers des ateliers
+                            et des projets applicatifs.
+                        </p>
+
+                        <hr class="my-4">
+
+                        <div class="d-grid gap-2">
+                            <a class="btn btn-dark" href="#workshops">
+                                <i class="bi bi-play-circle me-1"></i> Voir la liste des ateliers
+                            </a>
+                            <a class="btn btn-outline-dark" href="#aap">
+                                <i class="bi bi-check2-square me-1"></i> Consulter les AAP
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-wave"></div>
+</header>
+
+<!-- PRESENTATION -->
+<section id="presentation" class="section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <h2 class="section-title">📘 Présentation générale</h2>
+                <p class="text-body-secondary">
+                    Le module SOA vise à former les étudiants à la conception et au développement d’applications distribuées modernes,
+                    basées sur des services interopérables. Il couvre l’évolution du Web vers les services, les paradigmes architecturaux,
+                    ainsi que les technologies majeures : SOAP, REST, GraphQL et la sécurisation des API.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-soft">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold mb-2">Informations</h3>
+                        <ul class="list-unstyled mb-0 text-body-secondary">
+                            <li class="mb-2"><i class="bi bi-building me-2"></i> ESPRIT School of Engineering</li>
+                            <li class="mb-2"><i class="bi bi-mortarboard me-2"></i> Module : SOA</li>
+                            <li class="mb-2"><i class="bi bi-calendar3 me-2"></i> 2025–2026</li>
+                            <li><i class="bi bi-collection me-2"></i> Cours + Workshops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- quick stats -->
+        <div class="row g-3 mt-2">
+            <div class="col-md-3">
+                <div class="stat card border-0 shadow-soft">
+                    <div class="card-body">
+                        <div class="stat-icon"><i class="bi bi-journals"></i></div>
+                        <div class="stat-value">Cours</div>
+                        <div class="stat-label">Fondations + architectures</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat card border-0 shadow-soft">
+                    <div class="card-body">
+                        <div class="stat-icon"><i class="bi bi-wrench-adjustable"></i></div>
+                        <div class="stat-value">Ateliers</div>
+                        <div class="stat-label">SOAP / REST / GraphQL</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat card border-0 shadow-soft">
+                    <div class="card-body">
+                        <div class="stat-icon"><i class="bi bi-shield-check"></i></div>
+                        <div class="stat-value">Sécurité</div>
+                        <div class="stat-label">JWT • filtres • accès</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat card border-0 shadow-soft">
+                    <div class="card-body">
+                        <div class="stat-icon"><i class="bi bi-diagram-3"></i></div>
+                        <div class="stat-value">Projet</div>
+                        <div class="stat-label">Analyse & refonte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- OBJECTIFS -->
+<section id="objectifs" class="section bg-soft">
+    <div class="container">
+        <h2 class="section-title">🎯 Objectifs du module</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold"><i class="bi bi-compass me-2"></i>Comprendre SOA</h3>
+                        <p class="text-body-secondary mb-0">
+                            Comprendre les fondements des architectures orientées services et l’évolution du Web vers les services.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold"><i class="bi bi-braces me-2"></i>Développer des APIs</h3>
+                        <p class="text-body-secondary mb-0">
+                            Concevoir, exposer et consommer des services web via SOAP, REST et GraphQL.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold"><i class="bi bi-shield-lock me-2"></i>Sécuriser</h3>
+                        <p class="text-body-secondary mb-0">
+                            Intégrer des mécanismes de sécurité (authentification par token/JWT) et gérer les autorisations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTENU -->
+<section id="contenu" class="section">
+    <div class="container">
+        <h2 class="section-title">📚 Contenu du module</h2>
+
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold mb-2"><i class="bi bi-journal-text me-2"></i>Cours</h3>
+                        <ul class="mb-0 text-body-secondary">
+                            <li>Contexte et évolution du Web vers les services</li>
+                            <li>Paradigmes et architectures logicielles</li>
+                            <li>Services Web : concepts, avantages, caractéristiques</li>
+                            <li>Comparaison : SOAP vs REST vs GraphQL</li>
+                            <li>Sécurité des services et bonnes pratiques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold mb-2"><i class="bi bi-tools me-2"></i>Approche pédagogique</h3>
+                        <ul class="mb-0 text-body-secondary">
+                            <li>Apprentissage progressif : théorie → pratique</li>
+                            <li>Ateliers guidés (clients & serveurs)</li>
+                            <li>Workshops d’intégration (GraphQL, Sécurité)</li>
+                            <li>Projet d’analyse & refonte d’une application existante</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops" class="section bg-soft">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-2">
+            <div>
+                <h2 class="section-title mb-1">🧪 Cours, Ateliers & Workshops</h2>
+                <p class="text-body-secondary mb-0">Clique sur un élément pour accéder au dossier correspondant dans ton repo.</p>
+            </div>
+
+            <div class="d-flex gap-2">
+                <select class="form-select form-select-sm" id="filterType" style="min-width: 220px;">
+                    <option value="all" selected>Afficher tout</option>
+                    <option value="course">Cours</option>
+                    <option value="workshop">Workshops</option>
+                    <option value="lab">Ateliers</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-1" id="cardsContainer">
+            <!-- Cards injected by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- AAP -->
+<section id="aap" class="section">
+    <div class="container">
+        <h2 class="section-title">✅ Acquis d’Apprentissage du Module (AAP)</h2>
+        <div class="row g-3">
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-soft">
+                    <div class="card-body">
+                        <p class="text-body-secondary mb-3">
+                            Les ateliers et workshops du module permettent de consolider les acquis d’apprentissage suivants :
+                        </p>
+                        <ul class="mb-0">
+                            <li><strong>AAP1</strong> : Analyser une architecture logicielle existante</li>
+                            <li><strong>AAP2</strong> : Concevoir une architecture orientée services</li>
+                            <li><strong>AAP3</strong> : Développer et exposer des services web</li>
+                            <li><strong>AAP4</strong> : Consommer et intégrer des services web</li>
+                            <li><strong>AAP5</strong> : Sécuriser des services web</li>
+                            <li><strong>AAP6</strong> : Comparer et justifier un style architectural</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body">
+                        <h3 class="h6 fw-semibold mb-2"><i class="bi bi-lightbulb me-2"></i>Utilisation de Bloom</h3>
+                        <p class="text-body-secondary mb-0">
+                            <img
+                                    src="https://poleressourcespedagogiques.fr/wp-content/uploads/2024/05/bloom.webp"
+                                    alt="Taxonomie de Bloom"
+                                    class="img-fluid rounded-4"
+                                    style="max-height: 190px;"
+                            />
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ENSEIGNANTE -->
+<section id="enseignante" class="section">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
+            <div>
+                <h2 class="section-title mb-1">👩‍🏫 Enseignante</h2>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <!-- Profil -->
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <!-- Photo : mets ton image dans assets/img/badia.jpg -->
+                            <img
+                                    src="https://media.licdn.com/dms/image/v2/D4D03AQHBkTaQuiKd2w/profile-displayphoto-shrink_800_800/B4DZbtSiU3HQAc-/0/1747737782801?e=1767830400&v=beta&t=EHJwi_5ONS1VncmzURuKFcl5gq7qauDAEMb8g-Ag78Q"
+                                    width="20%"
+                                    alt="Badia Bouhdid"
+                                    class="profile-avatar"
+                            />
+                            <div>
+                                <h3 class="h5 fw-bold mb-1">Badia Bouhdid</h3>
+                                <div class="text-body-secondary">
+                                    Enseignante à ESPRIT
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <p class="text-body-secondary mb-3">
+                            <!-- À REMPLIR : court résumé -->
+                          <span class="placeholder-text">
+                             Je suis <strong>Badia Bouhdid</strong>, enseignante à  <strong>l’École d’Ingénieurs ESPRIT</strong>
+                             et <strong>créatrice des ressources pédagogiques centralisées sur GitHub</strong>.
+                              Mon objectif est de proposer un parcours structuré qui combine les fondements théoriques et une mise en pratique progressive
+                              à travers des ateliers  et des projets applicatifs.
+                        </span>
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <a class="btn btn-primary" href="https://www.linkedin.com/in/badiabouhdid/" target="_blank" rel="noopener">
+                                <i class="bi bi-linkedin me-1"></i> LinkedIn
+                            </a>
+
+                            <!-- À REMPLIR : lien GitHub si tu veux l’ajouter -->
+                            <a class="btn btn-outline-primary" href="https://github.com/badi3a" target="_blank" rel="noopener">
+                                <i class="bi bi-github me-1"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infos à compléter -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-soft h-100">
+                    <div class="card-body p-4">
+                        <h3 class="h6 fw-semibold mb-3"><i class="bi bi-card-checklist me-2"></i>Informations</h3>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-4 bg-soft">
+                                    <div class="fw-semibold mb-1">🎓 Parcours & spécialité</div>
+                                    <div class="text-body-secondary placeholder-text">
+                                        Dr.Ingénieur en informatique, diplomée de l'ENSI université Manouba
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-4 bg-soft">
+                                    <div class="fw-semibold mb-1">🧩 Modules enseignés</div>
+                                    <div class="text-body-secondary placeholder-text">
+                                        SOA, Microservices, Systèmes Distribués, Developpement Web
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-4 bg-soft">
+                                    <div class="fw-semibold mb-1">🛠️ Approche pédagogique</div>
+                                    <div class="text-body-secondary placeholder-text">
+                                        apprentissage actif: PPBL-Project&Problem Based Learning
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="p-3 rounded-4 bg-soft">
+                                    <div class="fw-semibold mb-1">📌 Contributions (GitHub)</div>
+                                    <div class="text-body-secondary placeholder-text">
+                                        -SOA-Training: +200 forks, +400 clones<br>
+                                        -Angular-Training: +50 forks, +100 clones
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="p-3 rounded-4 bg-soft">
+                                    <div class="fw-semibold mb-1">🏆 Points forts / Réalisations</div>
+                                    <div class="text-body-secondary placeholder-text">
+                                        -contribution à TALE: INTENATIONAL CONFERENCE ON TEACHING, assement and leanring for engineering<br>
+                                        -contribution à EDUCON:The IEEE Global Engineering Education Conference
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER (Profil Enseignante) -->
+<footer class="py-4 border-top">
+    <div class="container">
+        <div class="row align-items-center g-3">
+            <div class="col-md-8">
+                <div class="d-flex align-items-center gap-3">
+                    <img
+                            src="https://media.licdn.com/dms/image/v2/D4D03AQHBkTaQuiKd2w/profile-displayphoto-shrink_800_800/B4DZbtSiU3HQAc-/0/1747737782801?e=1767830400&v=beta&t=EHJwi_5ONS1VncmzURuKFcl5gq7qauDAEMb8g-Ag78Q"
+                            alt="Badia Bouhdid"
+                            class="profile-avatar-sm" width="20%"
+                    />
+                    <div class="small text-body-secondary">
+                        <div class="fw-semibold text-body">Badia Bouhdid</div>
+                        <div>Enseignante du module SOA • Créatrice des ressources pédagogiques sur GitHub</div>
+                        <div class="mt-1">
+                            <a href="https://www.linkedin.com/in/badiabouhdid/" target="_blank" rel="noopener" class="link-primary text-decoration-none">
+                                <i class="bi bi-linkedin me-1"></i> LinkedIn
+                            </a>
+                            <span class="mx-2">•</span>
+                            <span>ESPRIT • 2025–2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-md-end">
+                <a class="btn btn-sm btn-outline-secondary" href="#top" aria-label="Retour en haut">
+                    <i class="bi bi-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script src="assets/main.js"></script>
+</body>
+</html>

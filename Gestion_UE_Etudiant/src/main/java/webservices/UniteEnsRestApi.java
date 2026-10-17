@@ -6,6 +6,7 @@ import metiers.UniteEnseignementBusiness;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/ue")
 public class UniteEnsRestApi {
@@ -58,5 +59,25 @@ public class UniteEnsRestApi {
         }
         return Response.status(404).entity("Introuvable").build();
     }
+
+    //  Rechercher par  code
+    @GET
+    @Path("/search/{code}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response searchUe(@PathParam("code") int code) {
+
+        List<UniteEnseignement> liste = helper.getListeUE();
+
+        for (UniteEnseignement ue : liste) {
+            if (ue.getCode() == code) {
+                return Response.ok(ue).build();
+            }
+        }
+
+        return Response.status(Response.Status.NOT_FOUND)
+                .entity("UE introuvable").build();
+    }
+
+
 
 }
