@@ -24,6 +24,9 @@ type QueryResolver {
      allModules: [Module]
         modulesByType(type: TypeModule!): [Module]
         moduleByMatricule(matricule: String!): Module
+        ueByCode(code: Int!): UniteEnseignement
+        uesByDomaine(domaine: String!): [UniteEnseignement]
+        uesBySemestre(semestre: Int!): [UniteEnseignement]
 }
 
 type MutationResolver {
@@ -34,6 +37,16 @@ type MutationResolver {
         credits: Int!
         semestre: Int!
     ): Boolean
+
+    updateUniteEnseignement(
+            code: Int!
+            domaine: String!
+            responsable: String!
+            credits: Int!
+            semestre: Int!
+        ): UniteEnseignement
+
+    deleteUniteEnseignement(code: Int!): String
 
     addModule(
             matricule: String!

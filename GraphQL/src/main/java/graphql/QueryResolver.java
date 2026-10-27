@@ -75,4 +75,21 @@ public class QueryResolver implements GraphQLRootResolver {
     }
 
 
+    // ---------- Partie B : Unités d'Enseignement ----------
+
+    /** B.2 - Unité d'Enseignement à partir de son code unique (null si introuvable) */
+    public UniteEnseignement ueByCode(int code) {
+        return helper.getUEByCode(code);
+    }
+
+    /** B.3 - Toutes les UE d'un domaine donné */
+    public List<UniteEnseignement> uesByDomaine(String domaine) {
+        return helper.getUEByDomaine(domaine);
+    }
+
+    /** B.4 - Toutes les UE d'un semestre donné */
+    public List<UniteEnseignement> uesBySemestre(int semestre) {
+        return helper.getUEBySemestre(semestre);
+    }
+
 }

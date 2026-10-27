@@ -60,6 +60,28 @@ public class MutationResolver implements GraphQLRootResolver {
     }
 
 
+    // ---------- Partie B : Unités d'Enseignement ----------
+    // (B.1 - création : addUniteEnseignement, définie plus haut)
+
+    /** B.5 - Mise à jour d'une UE identifiée par son code (retourne l'UE modifiée, ou null) */
+    public UniteEnseignement updateUniteEnseignement(int code, String domaine, String responsable,
+                                                     int credits, int semestre) {
+        UniteEnseignement updated = new UniteEnseignement(code, domaine, responsable, credits, semestre);
+        if (helper.updateUniteEnseignement(code, updated)) {
+            return helper.getUEByCode(code);
+        }
+        return null;
+    }
+
+    /** B.6 - Suppression d'une UE identifiée par son code */
+    public String deleteUniteEnseignement(int code) {
+        return helper.deleteUniteEnseignement(code)
+                ? "deleted successfully"
+                : "unite enseignement not found";
+    }
+
+
+
     // ---------- Partie A : Modules ----------
 
     /** A.2 - Création d'un module (retourne true si l'UE existe et que le module est ajouté) */

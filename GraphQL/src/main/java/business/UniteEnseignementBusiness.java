@@ -63,7 +63,7 @@ public class UniteEnseignementBusiness {
     }
 
     public boolean updateUniteEnseignement(int code, UniteEnseignement updatedUE) {
-        int index = -1;
+       /* int index = -1;
         for (int i = 0; i < unitesEnseignement.size(); i++) {
             if (unitesEnseignement.get(i).getCode() == code) {
                 index = i;
@@ -77,6 +77,16 @@ public class UniteEnseignementBusiness {
         } else {
             return false;
         }
+        */
+        UniteEnseignement existing = getUEByCode(code);
+        if (existing == null) {
+            return false;
+        }
+        existing.setDomaine(updatedUE.getDomaine());
+        existing.setResponsable(updatedUE.getResponsable());
+        existing.setCredits(updatedUE.getCredits());
+        existing.setSemestre(updatedUE.getSemestre());
+        return true;
     }
 
     public List<UniteEnseignement> getListeUE() {
