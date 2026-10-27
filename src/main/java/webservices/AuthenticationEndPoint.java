@@ -2,6 +2,7 @@ package webservices;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.Claims;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.ws.rs.*;
@@ -34,7 +35,8 @@ public class AuthenticationEndPoint {
     private UriInfo uriInfo;
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
+    //@Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 
     // @Produces(MediaType.TEXT_PLAIN)
@@ -52,14 +54,33 @@ public class AuthenticationEndPoint {
             // authenticate(cred.getUsername(), cred.getPassword());
 
             // Issue a token for the user //2
-            String token = issueToken(username);
+            //String token = issueToken(username);
             // String token = issueToken(cred.getUsername());
 
             // Return the token on the response
-            return Response.ok(token).build();
+            return Response.ok(tokensJson(username)).build();
 
         } catch (Exception e) {
             return Response.status(Response.Status.FORBIDDEN).build();
+        }
+    }
+
+
+    //  exchange a valid refresh token for a new access token (+ a new refresh token)
+    @POST
+    @Path("/refresh")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response refresh(@FormParam("refreshToken") String refreshToken) {
+        try {
+            Claims claims = Jwts.parser().setSigningKey(getKey())
+                    .parseClaimsJws(refreshToken).getBody();   // checks signature + expiration
+            if (!"refresh".equals(claims.get("type"))) {
+                throw new Exception("Not a refresh token");
+            }
+            return Response.ok(tokensJson(claims.getSubject())).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
 
@@ -70,6 +91,11 @@ public class AuthenticationEndPoint {
 
     }
 
+    private Key getKey() {
+        String keyString = "simplekey";
+        return new SecretKeySpec(keyString.getBytes(), 0, keyString.getBytes().length, "DES");
+    }
+/*
     private String issueToken(String username) {
         // Issue a token (can be a random String persisted to a database or a JWT token)
         // The issued token must be associated to a user
@@ -96,7 +122,22 @@ public class AuthenticationEndPoint {
 
         return jwtToken;
     }
-
+*/
+    private String issueToken(String username, long minutes, String type) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuer(uriInfo.getAbsolutePath().toString())
+                .claim("type", type)                       // "access" or "refresh"
+                .setIssuedAt(new Date())
+                .setExpiration(toDate(LocalDateTime.now().plusMinutes(minutes)))
+                .signWith(SignatureAlgorithm.HS512, getKey())
+                .compact();
+    }
+    private String tokensJson(String username) {
+        String access  = issueToken(username, 15L, "access");            // 15 min
+        String refresh = issueToken(username, 7L * 24 * 60, "refresh");  // 7 days
+        return "{\"accessToken\":\"" + access + "\",\"refreshToken\":\"" + refresh + "\"}";
+    }
     // ======================================
     // = Private methods =
     // ======================================

@@ -1,6 +1,7 @@
 package filtres;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.Claims;
 
 import javax.annotation.Priority;
 import javax.crypto.spec.SecretKeySpec;
@@ -70,7 +71,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
                 .header(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME).build());
     }
-
+/*
     private void validateToken(String token) {
         // Check if it was issued by the server and if it's not expired
         // Throw an Exception if the token is invalid
@@ -89,6 +90,20 @@ public class AuthenticationFilter implements ContainerRequestFilter {
             (this.requestContext).abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
 
         }
+    }
+
+ */
+    private void validateToken(String token) {
+        Claims claims = Jwts.parser().setSigningKey(getKey())
+                .parseClaimsJws(token).getBody();          // throws if invalid/expired
+        if ("refresh".equals(claims.get("type"))) {
+            throw new RuntimeException("Refresh token cannot be used to access resources");
+        }
+    }
+
+    private Key getKey() {
+        String keyString = "simplekey";
+        return new SecretKeySpec(keyString.getBytes(), 0, keyString.getBytes().length, "DES");
     }
 
 }
