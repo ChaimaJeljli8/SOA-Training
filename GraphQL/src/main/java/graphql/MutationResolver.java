@@ -1,7 +1,9 @@
 package graphql;
 
 // Import the business logic class responsible for managing "UniteEnseignement" data
+import business.ModuleBusiness;
 import business.UniteEnseignementBusiness;
+import entities.Module;
 
 // Import the GraphQL library class used to define the root of GraphQL mutations
 import com.coxautodev.graphql.tools.GraphQLRootResolver;
@@ -18,13 +20,15 @@ public class MutationResolver implements GraphQLRootResolver {
 
     // Attribute used to access the business logic (service layer)
     public UniteEnseignementBusiness helper;
-
+    public ModuleBusiness moduleHelper;
     /**
      * Constructor of the resolver.
      * It initializes the business helper that manages the teaching units.
      */
     public MutationResolver() {
+
         helper = new UniteEnseignementBusiness();
+        moduleHelper = new ModuleBusiness();
     }
 
     /**
@@ -54,4 +58,41 @@ public class MutationResolver implements GraphQLRootResolver {
         // The helper handles the actual persistence or logic of adding the entity
         return helper.addUniteEnseignement(ue);
     }
+
+
+    // ---------- Partie A : Modules ----------
+
+    /** A.2 - Création d'un module (retourne true si l'UE existe et que le module est ajouté) */
+    public boolean addModule(String matricule, String libelle, int coef, int volumeHoraire,
+                             int codeUE, Module.TypeModule type) {
+        UniteEnseignement ue = helper.getUEByCode(codeUE);
+        if (ue == null) {
+            return false; // UE inexistante : on refuse la création
+        }
+        Module module = new Module(matricule, libelle, coef, volumeHoraire, type, ue);
+        return moduleHelper.addModule(module);
+    }
+
+    /** A.3 - Modification d'un module identifié par sa matricule (retourne le module modifié, ou null) */
+    public Module updateModule(String matricule, String libelle, int coef, int volumeHoraire,
+                               int codeUE, Module.TypeModule type) {
+        UniteEnseignement ue = helper.getUEByCode(codeUE);
+        if (ue == null) {
+            return null;
+        }
+        Module updated = new Module(matricule, libelle, coef, volumeHoraire, type, ue);
+        if (moduleHelper.updateModule(matricule, updated)) {
+            return moduleHelper.getModuleByMatricule(matricule);
+        }
+        return null;
+    }
+
+    /** A.6 - Suppression d'un module identifié par sa matricule */
+    public String deleteModule(String matricule) {
+        return moduleHelper.deleteModule(matricule)
+                ? "deleted successfully"
+                : "module not found";
+    }
+
+
 }
